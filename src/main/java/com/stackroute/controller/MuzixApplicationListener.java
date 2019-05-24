@@ -39,7 +39,7 @@ class MuzixApplicationListener implements ApplicationListener<ContextRefreshedEv
     @Value("${track.comments}")
     private String comments;
 
-    Track track=new Track(trackid,trackName,comments);
+
 
     @PostConstruct
     public void saveTrack(){
@@ -60,8 +60,9 @@ class MuzixApplicationListener implements ApplicationListener<ContextRefreshedEv
         trackRepository.save(track3);
         Track track4=new Track(4,"Team","By Krewella");
         trackRepository.save(track4);
-        //trackRepository.save(track);
-        Track track5=new Track(6,environment.getProperty("track.name"),environment.getProperty("track.comments"));
+        Track track=new Track(trackid,trackName,comments);
+        trackRepository.save(track);
+        Track track5=new Track(Integer.parseInt(environment.getProperty("track2.id")),environment.getProperty("track2.name"),environment.getProperty("track2.comments"));
         trackRepository.save(track5);
     }
 }
